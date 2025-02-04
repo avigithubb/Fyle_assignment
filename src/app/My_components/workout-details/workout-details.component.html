@@ -1,0 +1,124 @@
+
+<div class="flex items-center justify-center min-h-screen text-4xl">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+   
+    <form class="max-w-md mx-auto" (ngSubmit)="onSubmit()">
+        
+        
+        <div class="grid md:grid-cols-2 md:gap-6">
+           
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" [(ngModel)]="username" name="floating_last_name" id="floating_last_name"
+                    class="block py-2.5 px-0 w-full text-sm text-black-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="floating_last_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Search</label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                
+                
+                <select id="floating_first_name" [(ngModel)]="filter" name="filter" (change)="onSubmit()" class="bg-gray-50 border-0 border-b border-gray-300 text-gray-900 text-sm 
+                rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+                dark:bg-gray-700 dark:border-0 dark:border-b dark:border-gray-600 
+                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
+                dark:focus:border-blue-500
+                ">
+                    <option selected>FIlter By Workout Type</option>
+                    <option value="Running">Running</option>
+                    <option value="Cycling">Cycling</option>
+                    <option value="Swimming">Swimming</option>
+                    <option value="Yoga">Yoga</option>
+                  </select>
+            </div>
+        </div>
+        <button type="submit" style="display: none;"></button>
+        
+    </form>
+
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+               
+                <th scope="col" class="px-6 py-3">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Workouts
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Number of workouts
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Workout minutes
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody *ngFor="let w of workouts">
+            <!-- @for (w of workouts; track w) { -->
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{w.name}}
+                    </th>
+                    <td class="px-6 py-4">
+                        @for (t of w.workouts; track t) {
+                            <p>{{t.type}}</p>
+                        }
+                       
+                    </td>
+                    <td class="px-6 py-4">
+                        {{w.workouts.length}}
+                    </td>
+                    <td class="px-6 py-4">
+                        @for (t of w.workouts; track t) {
+                            <p>{{t.minutes}}</p>
+                        }
+                    </td>
+                
+                </tr>
+            <!-- } -->
+            
+            
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+  
+
+</div>
+  <div class="flex flex-col items-center">
+    <!-- Help text -->
+    <span class="text-sm text-gray-700 dark:text-gray-400">
+        Showing <span class="font-semibold text-gray-900 dark:text-white">1</span> to <span class="font-semibold text-gray-900 dark:text-white">{{workouts.length}}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{workouts.length}}</span> Entries
+    </span>
+    <!-- Buttons -->
+    <div class="inline-flex mt-2 xs:mt-0">
+        <button class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            Prev
+        </button>
+        <button class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            Next
+        </button>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2 rtl:space-x-reverse">
+    <select
+        class="h-8 text-sm px-2 leading-none transition duration-75 border-gray-300 rounded-lg shadow-sm outline-none focus:border-yellow-500 focus:ring-1 focus:ring-inset focus:ring-yellow-500 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-yellow-500">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="-1">All</option>
+    </select>
+
+    <span class="text-sm font-medium dark:text-white">
+        per page
+    </span>
+</div>
