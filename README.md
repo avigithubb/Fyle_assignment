@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # FyleAssignment
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
@@ -62,3 +63,7 @@ For more information on using the Angular CLI, including detailed command refere
 # Fyle_assignment
 An assignment on Angular
 >>>>>>> f47b9a379de36e800a2720123712cfa25505fe1c
+=======
+# Fyle_assignment
+An angular based app
+>>>>>>> 44f5ee8502a133ae02da8189c50c1710847198b9
